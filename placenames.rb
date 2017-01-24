@@ -15,9 +15,9 @@ BOTTOM_Y = 400
 LEFT_X = 255
 RIGHT_X = 550
 
-names.each_slice(4) do |batch|
+names.sort.each_slice(4) do |batch|
   batch_names = batch.map do |name|
-    name.split(' ')[0]
+    name
   end
   Prawn::Document.generate("output/#{batch_names.join('-')}.pdf", page_size: 'A4', page_layout: :portrait, margin: [0,0,0,0]) do |pdf|
     pdf.font_families.update("MoonFlower" => { normal: 'fonts/Moon Flower.ttf' })
